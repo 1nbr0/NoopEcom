@@ -1,4 +1,4 @@
-[
+export default [
   {
     name: "Canne à pêche Spinning/Casting de 1.7 ou 1.8m",
     img: "https://ae01.alicdn.com/kf/Sa59b6e995f324867a20b2788f9cb8496p/Catc-U-canne-p-che-Spinning-Casting-de-1-7-ou-1-8m-accessoire-en-Fiber.jpg_Q90.jpg_.webp",
