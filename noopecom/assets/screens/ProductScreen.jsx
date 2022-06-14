@@ -1,10 +1,11 @@
-import { Text, StyleSheet, View } from "react-native";
+import { StyleSheet, View } from "react-native";
+import Product from "../../src/components/Product";
 
 export const ProductScreen = () => {
   return (
     <>
       <View style={styles.container}>
-        <Text>ProductScreen</Text>
+        <Product />
       </View>
     </>
   );

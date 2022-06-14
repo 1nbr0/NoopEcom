@@ -2,7 +2,7 @@ import { ProfileScreen } from "../../assets/screens/ProfileScreen";
 import { ProductNavigator } from "./ProductNavigator";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { ROUTES } from "./routes";
-import { Ionicons, FontAwesome } from "@expo/vector-icons";
+import { Entypo, Feather } from "@expo/vector-icons";
 
 const Tab = createBottomTabNavigator();
 
@@ -10,8 +10,11 @@ export const TabNavigator = () => {
   return (
     <Tab.Navigator
       screenOptions={() => ({
-        tabBarActiveTintColor: "black",
-        tabBarInactiveTintColor: "#000",
+        tabBarStyle: {
+          backgroundColor: "#000",
+        },
+        tabBarActiveTintColor: "#b41921",
+        tabBarInactiveTintColor: "#fff",
         tabBarLabelStyle: {
           fontSize: 10,
         },
@@ -21,8 +24,9 @@ export const TabNavigator = () => {
         options={{
           headerShown: false,
           tabBarLabel: "Home",
+          tabBarShowLabel: false,
           tabBarIcon: ({ color, size }) => (
-            <Ionicons name="home" color={color} size={size} />
+            <Entypo name="home" color={color} size={size} />
           ),
         }}
         name={ROUTES.HOME}
@@ -32,8 +36,9 @@ export const TabNavigator = () => {
         options={{
           headerShown: false,
           tabBarLabel: "Profile",
+          tabBarShowLabel: false,
           tabBarIcon: ({ color, size }) => (
-            <FontAwesome name="user" color={color} size={size} />
+            <Feather name="user" color={color} size={size} />
           ),
         }}
         name={ROUTES.PROFILE}
