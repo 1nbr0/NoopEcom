@@ -11,8 +11,8 @@ export const Title = ({ children }) => {
 const styles = StyleSheet.create({
   titleContainer: {
     flexDirection: "row",
-    padding: 6,
-    backgroundColor: "yellow",
+    margin: 25,
+    padding: 10,
   },
   title: {
     fontSize: 30,

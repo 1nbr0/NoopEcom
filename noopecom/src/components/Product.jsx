@@ -1,36 +1,74 @@
-import React, { useRef } from "react";
+import React, { useRef, useState } from "react";
 import {
   View,
   StyleSheet,
   Text,
   SafeAreaView,
   TouchableOpacity,
-  Pressable,
+  Dimensions,
+  Image,
 } from "react-native";
 import { Title } from "./Title";
 import { AntDesign, FontAwesome5 } from "@expo/vector-icons";
 import BottomSheet from "react-native-gesture-bottom-sheet";
 
-export default function Product() {
+export default function Product(props) {
+  const [product, setProduct] = useState(props.product);
+  const [isLiked, setIsLiked] = useState(false);
   const bottomSheet = useRef();
   const bottomSheetSideBar = useRef();
+
+  const onLikesPress = () => {
+    const likesToAdd = isLiked ? -1 : 1;
+    setProduct({
+      ...product,
+      like_nb: product.like_nb + likesToAdd,
+    });
+    setIsLiked(!isLiked);
+  };
+
+  const description = product.desc;
+
+  var descSubstract = "";
+
+  if (description.length > 25) {
+    descSubstract = description.substring(description, 25) + " ... Voir plus";
+  } else {
+    descSubstract = description;
+  }
 
   return (
     <>
       <View style={styles.container}>
-        <Title>Product Titl ezek, scv nedk jvndkj</Title>
+        <Image
+          style={styles.image}
+          source={{
+            uri: product.img,
+          }}
+          resizeMode={"cover"}
+        />
+        <Title>{product.name}</Title>
         <View style={styles.BottomContainer}>
           <View style={styles.sideBar}>
-            <Pressable>
-              <AntDesign name="heart" size={36} color="black" />
-              <Text>123</Text>
-            </Pressable>
+            <TouchableOpacity
+              style={styles.iconContainer}
+              onPress={onLikesPress}
+            >
+              <AntDesign
+                name="heart"
+                size={36}
+                color={isLiked ? "red" : "black"}
+              />
+              <Text style={styles.statsLabel}>{product.like_nb}</Text>
+            </TouchableOpacity>
             <SafeAreaView style={styles.modalBottomSheetSideBar}>
               <BottomSheet
                 hasDraggableIcon
                 ref={bottomSheetSideBar}
                 height={350}
-              />
+              >
+                <Text>Les commentaires sont ici pour augmenter les stats</Text>
+              </BottomSheet>
               <TouchableOpacity
                 onPress={() => bottomSheetSideBar.current.show()}
               >
@@ -40,18 +78,12 @@ export default function Product() {
             </SafeAreaView>
           </View>
           <View style={styles.DescContainer}>
-            <Text>Description</Text>
             <SafeAreaView style={styles.modalBottomSheet}>
-              <BottomSheet
-                hasDraggableIcon
-                ref={bottomSheet}
-                height={350}
-                // sheetBackgroundColor={"transparent"}
-              >
-                <Text>Test</Text>
+              <BottomSheet hasDraggableIcon ref={bottomSheet} height={350}>
+                <Text>{description}</Text>
               </BottomSheet>
               <TouchableOpacity onPress={() => bottomSheet.current.show()}>
-                <Text style={styles.boldText}>Voir plus</Text>
+                <Text>{descSubstract}</Text>
               </TouchableOpacity>
             </SafeAreaView>
           </View>
@@ -65,13 +97,19 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     width: "100%",
+    height: Dimensions.get("window").height - 49,
     alignItems: "center",
-    backgroundColor: "red",
     justifyContent: "space-between",
+  },
+  image: {
+    position: "absolute",
+    top: 0,
+    right: 0,
+    bottom: 0,
+    left: 0,
   },
   BottomContainer: {
     padding: 10,
-    backgroundColor: "white",
     width: "100%",
     height: "40%",
     justifyContent: "space-between",
@@ -85,7 +123,6 @@ const styles = StyleSheet.create({
   },
   DescContainer: {
     padding: 5,
-    backgroundColor: "green",
     width: "100%",
     flexDirection: "row",
   },
@@ -98,5 +135,12 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: "center",
     alignItems: "center",
+  },
+  iconContainer: {
+    alignItems: "center",
+  },
+  statsLabel: {
+    alignSelf: "center",
+    color: "black",
   },
 });

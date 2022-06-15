@@ -1,20 +1,21 @@
-import { StyleSheet, View } from "react-native";
+import { StyleSheet, View, FlatList, Dimensions } from "react-native";
 import Product from "../../src/components/Product";
+import products from "../../data/products";
 
 export const ProductScreen = () => {
   return (
     <>
-      <View style={styles.container}>
-        <Product />
+      <View>
+        <FlatList
+          keyExtractor={(item) => item.id}
+          data={products}
+          renderItem={({ item }) => <Product product={item} />}
+          showsVerticalScrollIndicator={false}
+          snapToInterval={Dimensions.get("window").height - 49}
+          snapToAlignment={"start"}
+          decelerationRate={"fast"}
+        />
       </View>
     </>
   );
 };
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: "center",
-    alignItems: "center",
-  },
-});
