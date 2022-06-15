@@ -1,6 +1,6 @@
 import { DefaultTheme, NavigationContainer } from "@react-navigation/native";
-import { StyleSheet, Text, View } from "react-native";
 import { Layout } from "./src/components/Layout";
+import { AuthProvider } from "./src/contexts/AuthProvider";
 import { TabNavigator } from "./src/navigators/TabNavigator";
 
 const navTheme = {
@@ -13,10 +13,12 @@ const navTheme = {
 
 export default function App() {
   return (
-    <Layout>
-      <NavigationContainer theme={navTheme}>
-        <TabNavigator />
-      </NavigationContainer>
-    </Layout>
+    <AuthProvider>
+      <Layout>
+        <NavigationContainer theme={navTheme}>
+          <TabNavigator />
+        </NavigationContainer>
+      </Layout>
+    </AuthProvider>
   );
 }

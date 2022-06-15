@@ -1,6 +1,6 @@
 import { StyleSheet, View, FlatList, Dimensions } from "react-native";
-import Product from "../../src/components/Product";
-import products from "../../data/products";
+import Product from "../../components/Product";
+import products from "../../../data/products";
 
 export const ProductScreen = () => {
   return (
