@@ -1,8 +1,6 @@
 import { View, FlatList, Dimensions, ActivityIndicator } from "react-native";
 import Product from "../../components/Product";
-
 import { useEffect, useState } from "react";
-
 import { collection, getDocs } from "firebase/firestore";
 import { database } from "../../../db";
 
@@ -34,7 +32,7 @@ export const ProductScreen = () => {
       </View>
     );
   }
-  
+
   return (
     <>
       <View>
