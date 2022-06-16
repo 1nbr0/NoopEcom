@@ -14,4 +14,4 @@
 <h2>Contraintes techniques :</h2>
 <h3>Le format des images :</h3>
 <p>Nous avons du choisir un format d'image spécifique pour notre application afin que nos images prenne l'intégralité de l'arrière plan.</p>
-<p>Nous avons donc décidés de choisir le fomat des "story" remplissant parfaitement ce rôle. Le ce format est de 1080 x 1920</p>
+<p>Nous avons donc décidés de choisir le fomat des "story" remplissant parfaitement ce rôle. Le format est de 1080 x 1920</p>
