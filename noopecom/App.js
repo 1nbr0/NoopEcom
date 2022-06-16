@@ -1,5 +1,4 @@
 import { DefaultTheme, NavigationContainer } from "@react-navigation/native";
-import { StyleSheet, Text, View } from "react-native";
 import { Layout } from "./src/components/Layout";
 import { TabNavigator } from "./src/navigators/TabNavigator";
 

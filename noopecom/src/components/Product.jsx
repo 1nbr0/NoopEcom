@@ -8,6 +8,14 @@ import {
   Dimensions,
   Image,
 } from "react-native";
+import { database } from "../../db";
+import {
+  collection,
+  doc,
+  getDocs,
+  serverTimestamp,
+  updateDoc,
+} from "firebase/firestore";
 import { Title } from "./Title";
 import { AntDesign, FontAwesome5 } from "@expo/vector-icons";
 import BottomSheet from "react-native-gesture-bottom-sheet";
