@@ -34,7 +34,7 @@ Mot de passe: t1fo6r0qatc</p>
 <br>
 Tout format marchera mais ne sera pas forcément agréable à regarder. 
 <br>
-Il faudra faire attention lors du rajout d'image dans la base de donnée</p>
+Il faudra faire attention lors du rajout d'image dans la base de donnée.</p>
 
 <h2>Aide</h2>
 <h3>Ajout d'image dans Firebase</h3>
