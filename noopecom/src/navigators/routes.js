@@ -1,6 +1,6 @@
 export const ROUTES = {
   HOME: "Home",
-  PROFILE: "Profile",
+  FAV: "FavScreen",
   PRODUCT: "Product",
   SPLASH: "SplashScreen",
 };
