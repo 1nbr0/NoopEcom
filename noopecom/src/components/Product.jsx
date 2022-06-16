@@ -22,12 +22,12 @@ export default function Product(props) {
     const likesToAdd = isLiked ? -1 : 1;
     setProduct({
       ...product,
-      like_nb: product.like_nb + likesToAdd,
+      Like_Number: product.Like_Number + likesToAdd,
     });
     setIsLiked(!isLiked);
   };
 
-  const description = product.desc;
+  const description = product.Description;
 
   var descSubstract = "";
 
@@ -43,11 +43,11 @@ export default function Product(props) {
         <Image
           style={styles.image}
           source={{
-            uri: product.img,
+            uri: product.Image,
           }}
           resizeMode={"cover"}
         />
-        <Title>{product.name}</Title>
+        <Title>{product.Name}</Title>
         <View style={styles.BottomContainer}>
           <View style={styles.sideBar}>
             <TouchableOpacity
@@ -62,7 +62,7 @@ export default function Product(props) {
                 />
               </View>
               <BlurView intensity={80} tint="light" style={styles.statsLabel}>
-                <Text>{product.like_nb}</Text>
+                <Text>{product.Like_Number}</Text>
               </BlurView>
             </TouchableOpacity>
           </View>
