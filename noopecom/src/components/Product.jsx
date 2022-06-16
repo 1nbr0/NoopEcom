@@ -8,20 +8,12 @@ import {
   Dimensions,
   Image,
 } from "react-native";
-import { database } from "../../db";
-import {
-  collection,
-  doc,
-  getDocs,
-  serverTimestamp,
-  updateDoc,
-} from "firebase/firestore";
 import { Title } from "./Title";
 import { AntDesign, FontAwesome5 } from "@expo/vector-icons";
 import BottomSheet from "react-native-gesture-bottom-sheet";
 
-export default function Product(props) {
-  const [product, setProduct] = useState(props.product);
+export default function Product(product) {
+  console.log(product);
   const [isLiked, setIsLiked] = useState(false);
   const bottomSheet = useRef();
   const bottomSheetSideBar = useRef();
