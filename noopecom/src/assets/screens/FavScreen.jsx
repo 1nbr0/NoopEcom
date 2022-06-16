@@ -1,9 +1,10 @@
-import { View, Text, StyleSheet } from "react-native";
+import { View, StyleSheet } from "react-native";
+import { Title } from "../../components/Title";
 
-export const ProfileScreen = () => {
+export const FavScreen = () => {
   return (
     <View style={styles.container}>
-      <Text>Profile</Text>
+      <Title>Vos Favoris</Title>
     </View>
   );
 };

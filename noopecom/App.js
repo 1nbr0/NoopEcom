@@ -1,7 +1,8 @@
 import { DefaultTheme, NavigationContainer } from "@react-navigation/native";
-import { StyleSheet, Text, View } from "react-native";
 import { Layout } from "./src/components/Layout";
+import { AuthProvider, useAuth } from "./src/contexts/AuthProvider";
 import { TabNavigator } from "./src/navigators/TabNavigator";
+import { AuthNavigator } from "./src/navigators/AuthNavigator";
 
 const navTheme = {
   ...DefaultTheme,
@@ -13,10 +14,18 @@ const navTheme = {
 
 export default function App() {
   return (
-    <Layout>
-      <NavigationContainer theme={navTheme}>
-        <TabNavigator />
-      </NavigationContainer>
-    </Layout>
+    <AuthProvider>
+      <Layout>
+        <NavigationContainer theme={navTheme}>
+          <Root />
+        </NavigationContainer>
+      </Layout>
+    </AuthProvider>
   );
 }
+
+const Root = () => {
+  const { currentUser } = useAuth();
+
+  return currentUser ? <TabNavigator /> : <AuthNavigator />;
+};

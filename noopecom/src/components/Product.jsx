@@ -9,14 +9,14 @@ import {
   Image,
 } from "react-native";
 import { Title } from "./Title";
-import { AntDesign, FontAwesome5 } from "@expo/vector-icons";
+import { AntDesign } from "@expo/vector-icons";
 import BottomSheet from "react-native-gesture-bottom-sheet";
+import { BlurView } from "expo-blur";
 
 export default function Product(props) {
   const [product, setProduct] = useState(props.product);
   const [isLiked, setIsLiked] = useState(false);
   const bottomSheet = useRef();
-  const bottomSheetSideBar = useRef();
 
   const onLikesPress = () => {
     const likesToAdd = isLiked ? -1 : 1;
@@ -54,37 +54,30 @@ export default function Product(props) {
               style={styles.iconContainer}
               onPress={onLikesPress}
             >
-              <AntDesign
-                name="heart"
-                size={36}
-                color={isLiked ? "red" : "black"}
-              />
-              <Text style={styles.statsLabel}>{product.like_nb}</Text>
+              <View style={styles.likeContainer}>
+                <AntDesign
+                  name="heart"
+                  size={34}
+                  color={isLiked ? "red" : "black"}
+                />
+              </View>
+              <BlurView intensity={80} tint="light" style={styles.statsLabel}>
+                <Text>{product.like_nb}</Text>
+              </BlurView>
             </TouchableOpacity>
-            <SafeAreaView style={styles.modalBottomSheetSideBar}>
-              <BottomSheet
-                hasDraggableIcon
-                ref={bottomSheetSideBar}
-                height={350}
-              >
-                <Text>Les commentaires sont ici pour augmenter les stats</Text>
-              </BottomSheet>
-              <TouchableOpacity
-                onPress={() => bottomSheetSideBar.current.show()}
-              >
-                <FontAwesome5 name="comment-dots" size={36} color="black" />
-                <Text>123</Text>
-              </TouchableOpacity>
-            </SafeAreaView>
           </View>
-          <View style={styles.DescContainer}>
-            <SafeAreaView style={styles.modalBottomSheet}>
-              <BottomSheet hasDraggableIcon ref={bottomSheet} height={350}>
-                <Text>{description}</Text>
-              </BottomSheet>
+          <View style={styles.descContainer}>
+            <BlurView intensity={80} tint="light" style={styles.blurContainer}>
               <TouchableOpacity onPress={() => bottomSheet.current.show()}>
-                <Text>{descSubstract}</Text>
+                <Text style={styles.description}>{descSubstract}</Text>
               </TouchableOpacity>
+            </BlurView>
+            <SafeAreaView style={styles.modalBottomSheet}>
+              <BottomSheet hasDraggableIcon ref={bottomSheet} height={200}>
+                <View style={styles.modalBottomSheetContainer}>
+                  <Text style={styles.descriptionInModal}>{description}</Text>
+                </View>
+              </BottomSheet>
             </SafeAreaView>
           </View>
         </View>
@@ -112,35 +105,69 @@ const styles = StyleSheet.create({
     padding: 10,
     width: "100%",
     height: "40%",
-    justifyContent: "space-between",
+    justifyContent: "space-around",
   },
   sideBar: {
     width: "auto",
-    padding: 6,
+    padding: 10,
     height: "45%",
-    justifyContent: "space-between",
     alignItems: "flex-end",
+    marginRight: 10,
   },
-  DescContainer: {
-    padding: 5,
+  descContainer: {
     width: "100%",
     flexDirection: "row",
   },
-  boldText: {
-    paddingLeft: 4,
-    color: "white",
+  blurContainer: {
+    padding: 5,
+    borderRadius: 5,
+  },
+  descriptionInModal: {
+    color: "black",
+    fontSize: 18,
     fontWeight: "600",
+    marginBottom: 5,
+  },
+  description: {
+    color: "black",
+    fontSize: 18,
+    fontWeight: "300",
+    marginBottom: 5,
   },
   modalBottomSheet: {
     flex: 1,
     justifyContent: "center",
     alignItems: "center",
   },
+  modalBottomSheetContainer: {
+    paddingTop: 20,
+    paddingRight: 20,
+    paddingLeft: 20,
+    paddingBottom: 5,
+  },
   iconContainer: {
     alignItems: "center",
   },
+  likeContainer: {
+    backgroundColor: "white",
+    alignItems: "center",
+    justifyContent: "center",
+    borderRadius: 50,
+    width: 55,
+    height: 55,
+    shadowOffset: {
+      width: 3,
+      height: 5,
+    },
+    shadowOpacity: 1,
+    shadowRadius: 5,
+    elevation: 30,
+  },
   statsLabel: {
+    marginTop: 10,
+    padding: 2,
     alignSelf: "center",
     color: "black",
+    borderRadius: 5,
   },
 });

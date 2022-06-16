@@ -1,7 +1,7 @@
 {
   "expo": {
-    "name": "noopecom",
-    "slug": "noopecom",
+    "name": "NoopeCom",
+    "slug": "NoopeCom",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
