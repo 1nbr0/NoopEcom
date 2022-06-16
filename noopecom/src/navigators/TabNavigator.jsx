@@ -1,4 +1,4 @@
-import { ProfileScreen } from "../../assets/screens/ProfileScreen";
+import { ProfileScreen } from "../assets/screens/ProfileScreen";
 import { ProductNavigator } from "./ProductNavigator";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { ROUTES } from "./routes";

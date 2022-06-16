@@ -12,8 +12,8 @@ import { Title } from "./Title";
 import { AntDesign, FontAwesome5 } from "@expo/vector-icons";
 import BottomSheet from "react-native-gesture-bottom-sheet";
 
-export default function Product(product) {
-  console.log(product);
+export default function Product(props) {
+  const [product, setProduct] = useState(props.product);
   const [isLiked, setIsLiked] = useState(false);
   const bottomSheet = useRef();
   const bottomSheetSideBar = useRef();
@@ -22,12 +22,12 @@ export default function Product(product) {
     const likesToAdd = isLiked ? -1 : 1;
     setProduct({
       ...product,
-      like_nb: product.like_nb + likesToAdd,
+      Like_Number: product.Like_Number + likesToAdd,
     });
     setIsLiked(!isLiked);
   };
 
-  const description = product.desc;
+  const description = product.Description;
 
   var descSubstract = "";
 
@@ -43,11 +43,11 @@ export default function Product(product) {
         <Image
           style={styles.image}
           source={{
-            uri: product.img,
+            uri: product.Image,
           }}
           resizeMode={"cover"}
         />
-        <Title>{product.name}</Title>
+        <Title>{product.Name}</Title>
         <View style={styles.BottomContainer}>
           <View style={styles.sideBar}>
             <TouchableOpacity
@@ -59,7 +59,7 @@ export default function Product(product) {
                 size={36}
                 color={isLiked ? "red" : "black"}
               />
-              <Text style={styles.statsLabel}>{product.like_nb}</Text>
+              <Text style={styles.statsLabel}>{product.Like_Number}</Text>
             </TouchableOpacity>
             <SafeAreaView style={styles.modalBottomSheetSideBar}>
               <BottomSheet

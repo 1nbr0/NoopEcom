@@ -1,5 +1,5 @@
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
-import { ProductScreen } from "../../assets/screens/ProductScreen";
+import { ProductScreen } from "../assets/screens/ProductScreen";
 import { ROUTES } from "./routes";
 
 const Stack = createNativeStackNavigator();
