@@ -1,8 +1,8 @@
-import { ProfileScreen } from "../assets/screens/ProfileScreen";
+import { FavScreen } from "../assets/screens/FavScreen";
 import { ProductNavigator } from "./ProductNavigator";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { ROUTES } from "./routes";
-import { Entypo, Feather } from "@expo/vector-icons";
+import { Entypo, AntDesign } from "@expo/vector-icons";
 
 const Tab = createBottomTabNavigator();
 
@@ -38,11 +38,11 @@ export const TabNavigator = () => {
           tabBarLabel: "Profile",
           tabBarShowLabel: false,
           tabBarIcon: ({ color, size }) => (
-            <Feather name="user" color={color} size={size} />
+            <AntDesign name="hearto" size={size} color={color} />
           ),
         }}
-        name={ROUTES.PROFILE}
-        component={ProfileScreen}
+        name={ROUTES.FAV}
+        component={FavScreen}
       />
     </Tab.Navigator>
   );
