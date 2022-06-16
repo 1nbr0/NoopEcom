@@ -1,33 +1,38 @@
-import React, { createContext, useContext } from "react";
+import React, { createContext, useContext, useEffect, useState } from "react";
 import { auth } from "../../db";
 import { signInAnonymously, onAuthStateChanged } from "firebase/auth";
 
 const AuthContext = createContext();
 
 export const AuthProvider = ({ children }) => {
-  const AnonymousAuth = onAuthStateChanged(auth, (user) => {
-    if (!user) {
-      signInAnonymously(auth)
-        .then(() => {
-          console.log("User signed in anonymously");
-        })
-        .catch((error) => {
-          if (error.code === "auth/operation-not-allowed") {
-            console.log("Enable anonymous in your firebase console.");
-          }
+  const [currentUser, setCurrentUser] = useState(null);
 
-          console.error(error);
-        });
-    } else {
-      console.log(user);
-      const uid = user.uid;
-    }
-  });
+  useEffect(() => {
+    const anonymousAuth = onAuthStateChanged(auth, (user) => {
+      if (!user) {
+        signInAnonymously(auth)
+          .then(() => {
+            console.log("User signed in anonymously");
+            setCurrentUser(user);
+          })
+          .catch((error) => {
+            if (error.code === "auth/operation-not-allowed") {
+              console.log("Enable anonymous in your firebase console.");
+            }
+            console.error(error);
+          });
+      } else {
+        const uid = user.uid;
+        setCurrentUser(uid);
+      }
+    });
+    return () => anonymousAuth();
+  }, []);
 
   return (
     <AuthContext.Provider
       value={{
-        AnonymousAuth,
+        currentUser,
       }}
     >
       {children}

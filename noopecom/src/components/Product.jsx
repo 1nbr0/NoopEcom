@@ -54,28 +54,15 @@ export default function Product(props) {
               style={styles.iconContainer}
               onPress={onLikesPress}
             >
-              <AntDesign
-                name="heart"
-                size={36}
-                color={isLiked ? "red" : "black"}
-              />
+              <View style={styles.likeContainer}>
+                <AntDesign
+                  name="heart"
+                  size={40}
+                  color={isLiked ? "red" : "black"}
+                />
+              </View>
               <Text style={styles.statsLabel}>{product.like_nb}</Text>
             </TouchableOpacity>
-            <SafeAreaView style={styles.modalBottomSheetSideBar}>
-              <BottomSheet
-                hasDraggableIcon
-                ref={bottomSheetSideBar}
-                height={350}
-              >
-                <Text>Les commentaires sont ici pour augmenter les stats</Text>
-              </BottomSheet>
-              <TouchableOpacity
-                onPress={() => bottomSheetSideBar.current.show()}
-              >
-                <FontAwesome5 name="comment-dots" size={36} color="black" />
-                <Text>123</Text>
-              </TouchableOpacity>
-            </SafeAreaView>
           </View>
           <View style={styles.DescContainer}>
             <SafeAreaView style={styles.modalBottomSheet}>
@@ -118,7 +105,6 @@ const styles = StyleSheet.create({
     width: "auto",
     padding: 6,
     height: "45%",
-    justifyContent: "space-between",
     alignItems: "flex-end",
   },
   DescContainer: {
