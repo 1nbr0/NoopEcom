@@ -35,3 +35,8 @@ Mot de passe: t1fo6r0qatc</p>
 Tout format marchera mais ne sera pas forcément agréable à regarder. 
 <br>
 Il faudra faire attention lors du rajout d'image dans la base de donnée</p>
+
+<h2>Aide</h2>
+<h3>Ajout d'image dans Firebase</h3>
+<p>-1 Dans votre projet, dans la zone latéral gauche cliquer sur l'icone en forme de dossier appelé "Storage".</p>
+<p>-2 Cliquer sur "Importer un fichier" et sélectionner les images que vous vouler importer.</p>
