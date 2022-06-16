@@ -23,7 +23,15 @@
 
 <h3>Retool :</h3>
 
+<h2>Le logo</h2>
+<p>Concernant la signification du logo créer pour ce projet, nous avons opté pour un bâtiment rouge.
+<br>
+Ce bâtiment représente l'application comme une boutique dans laquelle les clients viendraient voir les produits. Quant à la couleur rouge, nous l'avons choisis, car elle symbolise la force et donc la force de proposition des clients pour le choix des produits.</p>
+
 <h2>Contraintes techniques :</h2>
 <h3>Le format des images :</h3>
 <p>Nous avons dû choisir un format d'image spécifique pour notre application afin que nos images prennent l'intégralité de l'arrière-plan.
 Nous avons donc décidé de choisir le format des "story" remplissant parfaitement ce rôle. Le format est de 1080 × 1920.</p>
+
+<h3>Inteface utilisateur</h3>
+<p>Pour que l'application soit intuitive et peu chargée visuellement, nous avons placé les icônes d'interaction en bas à droite, le titre centré en haut et l'image produit en arrière-plan. Nous devons faire attention au fait que l'image pourrait gêner le titre.</p>
